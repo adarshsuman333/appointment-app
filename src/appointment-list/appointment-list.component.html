@@ -1,33 +1,54 @@
-<!--Adding input fields for appointment title and date, and a button to add the appointment-->
-<div>
-    <input [(ngModel)]="newAppointmentTitle" placeholder="Appointment description"> 
-    <input [(ngModel)]="newAppointmentDate" type = "date" placeholder="Appointment date" >   
-    <button (click)="addAppointment()">Add Appointment</button>
-</div>
+<div class="container">
+    <div class="card mt-3">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center">Create new Appointment</h2>
+            </div>
+        </div>
+    </div>
 
-<!--Adding a list to display the appointments-->
-<ul>
-    <!--Using *ngFor to loop through the appointments array and display each appointment's title and date-->
-    
-    <!--*ngFor is a structural directive that allows us to repeat a block of HTML for each item in an array. In this case, we are looping through the appointments array and displaying the title and date of each appointment. The date is formatted using the date pipe to make it more readable.-->
-    
-    <li *ngFor="let appointment of appointments; index as i">
-        <!-- Here, we are using the index variable 'i' to keep track of the position of each appointment in the array. -->
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <input class="form-control" [(ngModel)]="newAppointmentTitle" placeholder="Appointment description"> 
+        </div>
+        <div class="col-md-4">
+            <input class="form-control" [(ngModel)]="newAppointmentDate" type = "date" placeholder="Appointment date" > 
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary w-100" (click)="addAppointment()">Add Appointment</button>
+        </div>
+    </div>
+
+    <h2 class="text-center mt-5">Appointments</h2>
+
+    <!--Adding a list to display the appointments-->
+    <ul class="list-group mt-3">
+        <!--Using *ngFor to loop through the appointments array and display each appointment's title and date-->
         
-        <!--Displaying the appointment title and date. The date is formatted using the date pipe to make it more readable.-->
-        {{ appointment.title }} - {{ appointment.date | date:'dd/MM/yyyy' }}
+        <!--*ngFor is a structural directive that allows us to repeat a block of HTML for each item in an array. In this case, we are looping through the appointments array and displaying the title and date of each appointment. The date is formatted using the date pipe to make it more readable.-->
+        
+        <li  *ngFor="let appointment of appointments; index as i" class="list-group-item d-flex justify-content-between align-items-center">
 
-        <!--Above, we are displaying the appointment title and date. The date is formatted using the date pipe to make it more readable. The date pipe takes a date value and formats it according to the specified format. In this case, we are using the default format, which will display the date in a human-readable format.-->
+            <!-- Here, we are using the index variable 'i' to keep track of the position of each appointment in the array. -->
+            
+            <!--Displaying the appointment title and date. The date is formatted using the date pipe to make it more readable.--> 
 
-        <!--We achieved this by using the date pipe in Angular, which allows us to format dates in a variety of ways. By using the date pipe, we can easily display the appointment date in a more user-friendly format without having to manually format the date ourselves.-->
+            {{ appointment.title }} - {{ appointment.date | date:'dd/MM/yyyy' }}
 
-        <!--We have also made use of two-way data binding with ngModel to bind the input fields for the appointment title and date to the component's properties. This allows us to easily capture the user input and use it to create new appointments when the "Add Appointment" button is clicked.-->
+            <!--Above, we are displaying the appointment title and date. The date is formatted using the date pipe to make it more readable. The date pipe takes a date value and formats it according to the specified format. In this case, we are using the default format, which will display the date in a human-readable format.-->
 
-        <!--In this case, we have used one-way data binding to display the appointment title and date in the list. The *ngFor directive is used to loop through the appointments array and display each appointment's title and date in a list item. The date is formatted using the date pipe to make it more readable.-->
+            <!--We achieved this by using the date pipe in Angular, which allows us to format dates in a variety of ways. By using the date pipe, we can easily display the appointment date in a more user-friendly format without having to manually format the date ourselves.-->
 
-        <!--Adding a button to delete the appointment. The button calls the deleteAppointment method and passes the index of the appointment to be deleted.-->
-        <button (click)="deleteAppointment(i)">Delete</button>
-        <!-- Here, i represents the index of the current appointment in the array -->
+            <!--We have also made use of two-way data binding with ngModel to bind the input fields for the appointment title and date to the component's properties. This allows us to easily capture the user input and use it to create new appointments when the "Add Appointment" button is clicked.-->
 
-    </li>
-</ul>
+            <!--In this case, we have used one-way data binding to display the appointment title and date in the list. The *ngFor directive is used to loop through the appointments array and display each appointment's title and date in a list item. The date is formatted using the date pipe to make it more readable.-->
+
+            <!--Adding a button to delete the appointment. The button calls the deleteAppointment method and passes the index of the appointment to be deleted.-->
+            
+            <button (click)="deleteAppointment(i)" class="btn btn-danger">Delete</button>
+            <!-- Here, i represents the index of the current appointment in the array -->
+
+        </li>
+    </ul>
+
+</div>
