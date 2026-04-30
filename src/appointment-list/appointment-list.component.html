@@ -1,5 +1,27 @@
+<!--Adding input fields for appointment title and date, and a button to add the appointment-->
 <div>
     <input [(ngModel)]="newAppointmentTitle" placeholder="Appointment description"> 
     <input [(ngModel)]="newAppointmentDate" type = "date" placeholder="Appointment date" >   
     <button (click)="addAppointment()">Add Appointment</button>
 </div>
+
+<!--Adding a list to display the appointments-->
+<ul>
+    <!--Using *ngFor to loop through the appointments array and display each appointment's title and date-->
+    
+    <!--*ngFor is a structural directive that allows us to repeat a block of HTML for each item in an array. In this case, we are looping through the appointments array and displaying the title and date of each appointment. The date is formatted using the date pipe to make it more readable.-->
+    
+    <li *ngFor="let appointment of appointments">
+        <!--Displaying the appointment title and date. The date is formatted using the date pipe to make it more readable.-->
+        {{ appointment.title }} - {{ appointment.date | date:'dd/MM/yyyy' }}
+
+        <!--Above, we are displaying the appointment title and date. The date is formatted using the date pipe to make it more readable. The date pipe takes a date value and formats it according to the specified format. In this case, we are using the default format, which will display the date in a human-readable format.-->
+
+        <!--We achieved this by using the date pipe in Angular, which allows us to format dates in a variety of ways. By using the date pipe, we can easily display the appointment date in a more user-friendly format without having to manually format the date ourselves.-->
+
+        <!--We have also made use of two-way data binding with ngModel to bind the input fields for the appointment title and date to the component's properties. This allows us to easily capture the user input and use it to create new appointments when the "Add Appointment" button is clicked.-->
+
+        <!--In this case, we have used one-way data binding to display the appointment title and date in the list. The *ngFor directive is used to loop through the appointments array and display each appointment's title and date in a list item. The date is formatted using the date pipe to make it more readable.-->
+
+    </li>
+</ul>
