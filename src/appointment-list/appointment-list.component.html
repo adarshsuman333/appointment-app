@@ -11,7 +11,9 @@
     
     <!--*ngFor is a structural directive that allows us to repeat a block of HTML for each item in an array. In this case, we are looping through the appointments array and displaying the title and date of each appointment. The date is formatted using the date pipe to make it more readable.-->
     
-    <li *ngFor="let appointment of appointments">
+    <li *ngFor="let appointment of appointments; index as i">
+        <!-- Here, we are using the index variable 'i' to keep track of the position of each appointment in the array. -->
+        
         <!--Displaying the appointment title and date. The date is formatted using the date pipe to make it more readable.-->
         {{ appointment.title }} - {{ appointment.date | date:'dd/MM/yyyy' }}
 
@@ -22,6 +24,10 @@
         <!--We have also made use of two-way data binding with ngModel to bind the input fields for the appointment title and date to the component's properties. This allows us to easily capture the user input and use it to create new appointments when the "Add Appointment" button is clicked.-->
 
         <!--In this case, we have used one-way data binding to display the appointment title and date in the list. The *ngFor directive is used to loop through the appointments array and display each appointment's title and date in a list item. The date is formatted using the date pipe to make it more readable.-->
+
+        <!--Adding a button to delete the appointment. The button calls the deleteAppointment method and passes the index of the appointment to be deleted.-->
+        <button (click)="deleteAppointment(i)">Delete</button>
+        <!-- Here, i represents the index of the current appointment in the array -->
 
     </li>
 </ul>
