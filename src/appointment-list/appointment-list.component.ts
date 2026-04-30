@@ -15,6 +15,25 @@ export class AppointmentListComponent {
   appointments: Appointment[] = [];
 
   addAppointment() {
-    alert(this.newAppointmentTitle + " " + this.newAppointmentDate);
+    if(this.newAppointmentTitle.trim() && this.newAppointmentDate){
+      let newAppointment: Appointment = {
+        id: 1,
+        title: this.newAppointmentTitle,
+        date: this.newAppointmentDate
+      };
+
+      //Pushing the new appointment to the appointments array
+      this.appointments.push(newAppointment);
+
+      //Clearing the form after hitting the add button
+      this.newAppointmentTitle = '';
+
+      // Resetting the date to the current date
+      this.newAppointmentDate = new Date();
+
+      // Alerting the number of appointments in the list
+      alert(this.appointments.length);
+      }
+    }
+
   }
-}
